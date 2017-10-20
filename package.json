@@ -1,0 +1,20 @@
+{
+  "name": "cartes",
+  "version": "1.0.0",
+  "description": "2d geometry math/intersection utility",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "2d",
+    "geometry",
+    "cartesian",
+    "vector"
+  ],
+  "author": "orlinskj",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^4.0.1"
+  }
+}
