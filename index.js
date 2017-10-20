@@ -1,6 +1,6 @@
 var depInjObj = {}
 
-require('./intersection')(depInjObj)
+require('./lib/intersection')(depInjObj)
 
 module.exports = {
   vec2: require('./lib/vec2'),

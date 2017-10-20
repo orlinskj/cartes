@@ -4,7 +4,7 @@
   "description": "2d geometry math/intersection utility",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "keywords": [
     "2d",
