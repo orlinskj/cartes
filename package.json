@@ -4,7 +4,8 @@
   "description": "2d geometry math/intersection utility",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "playground": "webpack --config playground/src/webpack.config.js"
   },
   "keywords": [
     "2d",
@@ -15,6 +16,9 @@
   "author": "orlinskj",
   "license": "ISC",
   "devDependencies": {
-    "mocha": "^4.0.1"
+    "chai": "^4.1.2",
+    "jquery": "^3.2.1",
+    "mocha": "^4.0.1",
+    "webpack": "^3.8.1"
   }
 }

@@ -1,6 +1,6 @@
-var assert = require('assert')
+var assert = require('chai').assert
 var Cartes = require('../index.js')
-var util = require('../lib/util.js')
+var constants = require('../lib/constants.js')
 
 describe('vec2', function() {
   describe('#vec2()', function() {
@@ -72,37 +72,39 @@ describe('vec2', function() {
     })
 
     it('should work with string token',function(){
-      assert.deepEqual(Cartes.vec2.fromVec('top'), {x: 0, y: -1})
-      assert.deepEqual(Cartes.vec2.fromVec('Top'), {x: 0, y: -1})
-      assert.deepEqual(Cartes.vec2.fromVec('TOP'), {x: 0, y: -1})
+      var invSqrtTwo = constants.invSqrtTwo
 
-      assert.deepEqual(Cartes.vec2.fromVec('topright'), {x: util.invSqrtTwo, y: -util.invSqrtTwo})
-      assert.deepEqual(Cartes.vec2.fromVec('top_right'), {x: util.invSqrtTwo, y: -util.invSqrtTwo})
-      assert.deepEqual(Cartes.vec2.fromVec('top-right'), {x: util.invSqrtTwo, y: -util.invSqrtTwo})
-      assert.deepEqual(Cartes.vec2.fromVec('Top-Right'), {x: util.invSqrtTwo, y: -util.invSqrtTwo})
-      assert.deepEqual(Cartes.vec2.fromVec('topRight'), {x: util.invSqrtTwo, y: -util.invSqrtTwo})
-      assert.deepEqual(Cartes.vec2.fromVec('TOPRIGHT'), {x: util.invSqrtTwo, y: -util.invSqrtTwo})
+      assert.deepEqual(Cartes.vec2.fromVec('top'), new Cartes.vec2(0,-1) )
+      assert.deepEqual(Cartes.vec2.fromVec('Top'), new Cartes.vec2(0,-1) )
+      assert.deepEqual(Cartes.vec2.fromVec('TOP'), new Cartes.vec2(0,-1) )
 
-      assert.deepEqual(Cartes.vec2.fromVec('right'), {x: 1, y: 0})
-      assert.deepEqual(Cartes.vec2.fromVec('Right'), {x: 1, y: 0})
-      assert.deepEqual(Cartes.vec2.fromVec('RIGHT'), {x: 1, y: 0})
+      assert.deepEqual(Cartes.vec2.fromVec('topright'), new Cartes.vec2(invSqrtTwo, -invSqrtTwo) )
+      assert.deepEqual(Cartes.vec2.fromVec('top_right'), new Cartes.vec2(invSqrtTwo, -invSqrtTwo) )
+      assert.deepEqual(Cartes.vec2.fromVec('top-right'), new Cartes.vec2(invSqrtTwo, -invSqrtTwo) )
+      assert.deepEqual(Cartes.vec2.fromVec('Top-Right'), new Cartes.vec2(invSqrtTwo, -invSqrtTwo) )
+      assert.deepEqual(Cartes.vec2.fromVec('topRight'), new Cartes.vec2(invSqrtTwo, -invSqrtTwo) )
+      assert.deepEqual(Cartes.vec2.fromVec('TOPRIGHT'), new Cartes.vec2(invSqrtTwo, -invSqrtTwo) )
 
-      assert.deepEqual(Cartes.vec2.fromVec('bottomright'), {x: util.invSqrtTwo, y: util.invSqrtTwo})
+      assert.deepEqual(Cartes.vec2.fromVec('right'), new Cartes.vec2(1, 0) )
+      assert.deepEqual(Cartes.vec2.fromVec('Right'), new Cartes.vec2(1, 0) )
+      assert.deepEqual(Cartes.vec2.fromVec('RIGHT'), new Cartes.vec2(1, 0) )
 
-      assert.deepEqual(Cartes.vec2.fromVec('bottom'), {x: 0, y: 1})
+      assert.deepEqual(Cartes.vec2.fromVec('bottomright'), new Cartes.vec2(invSqrtTwo, invSqrtTwo) )
 
-      assert.deepEqual(Cartes.vec2.fromVec('bottomleft'), {x: -util.invSqrtTwo, y: util.invSqrtTwo})
+      assert.deepEqual(Cartes.vec2.fromVec('bottom'), new Cartes.vec2(0, 1) )
 
-      assert.deepEqual(Cartes.vec2.fromVec('left'), {x: -1, y: 0})
-      assert.deepEqual(Cartes.vec2.fromVec('Left'), {x: -1, y: 0})
-      assert.deepEqual(Cartes.vec2.fromVec('LEFT'), {x: -1, y: 0})
+      assert.deepEqual(Cartes.vec2.fromVec('bottomleft'), new Cartes.vec2(-invSqrtTwo, invSqrtTwo) )
 
-      assert.deepEqual(Cartes.vec2.fromVec('topleft'), {x: -util.invSqrtTwo, y: -util.invSqrtTwo})
-      assert.deepEqual(Cartes.vec2.fromVec('top_left'), {x: -util.invSqrtTwo, y: -util.invSqrtTwo})
-      assert.deepEqual(Cartes.vec2.fromVec('top-left'), {x: -util.invSqrtTwo, y: -util.invSqrtTwo})
-      assert.deepEqual(Cartes.vec2.fromVec('Top-Left'), {x: -util.invSqrtTwo, y: -util.invSqrtTwo})
-      assert.deepEqual(Cartes.vec2.fromVec('topLeft'), {x: -util.invSqrtTwo, y: -util.invSqrtTwo})
-      assert.deepEqual(Cartes.vec2.fromVec('topLeft'), {x: -util.invSqrtTwo, y: -util.invSqrtTwo})
+      assert.deepEqual(Cartes.vec2.fromVec('left'), new Cartes.vec2(-1, 0) )
+      assert.deepEqual(Cartes.vec2.fromVec('Left'), new Cartes.vec2(-1, 0) )
+      assert.deepEqual(Cartes.vec2.fromVec('LEFT'), new Cartes.vec2(-1, 0) )
+
+      assert.deepEqual(Cartes.vec2.fromVec('topleft'), new Cartes.vec2(-invSqrtTwo, -invSqrtTwo) )
+      assert.deepEqual(Cartes.vec2.fromVec('top_left'), new Cartes.vec2(-invSqrtTwo, -invSqrtTwo) )
+      assert.deepEqual(Cartes.vec2.fromVec('top-left'), new Cartes.vec2(-invSqrtTwo, -invSqrtTwo) )
+      assert.deepEqual(Cartes.vec2.fromVec('Top-Left'), new Cartes.vec2(-invSqrtTwo, -invSqrtTwo) )
+      assert.deepEqual(Cartes.vec2.fromVec('topLeft'), new Cartes.vec2(-invSqrtTwo, -invSqrtTwo) )
+      assert.deepEqual(Cartes.vec2.fromVec('topLeft'), new Cartes.vec2(-invSqrtTwo, -invSqrtTwo) )
     })
   })
 
@@ -130,61 +132,61 @@ describe('vec2', function() {
 
   describe('#add()', function(){
     it('should support number parameters', function(){
-      assert.deepEqual(new Cartes.vec2(1,2).add(-3,4), {x:-2, y:6})
-      assert.deepEqual(new Cartes.vec2(1,2).add(-3), {x:-2, y:2})
-      assert.deepEqual(new Cartes.vec2(0,0).add(0,4), {x:0, y:4})
+      assert.deepEqual(new Cartes.vec2(1,2).add(-3,4), new Cartes.vec2(-2, 6) )
+      assert.deepEqual(new Cartes.vec2(1,2).add(-3), new Cartes.vec2(-2, 2) )
+      assert.deepEqual(new Cartes.vec2(0,0).add(0,4), new Cartes.vec2(0, 4) )
     })
 
     it('should not mutate original object', function(){
       var v = new Cartes.vec2(1,2)
       var u = v.add(2,1)
 
-      assert.deepEqual(v, {x: 1, y: 2})
+      assert.deepEqual(v, new Cartes.vec2(1,2) )
     })
 
     it('should support array parameter', function(){
-      assert.deepEqual(new Cartes.vec2(1,2).add([2,-3]), {x: 3, y:-1})
-      assert.deepEqual(new Cartes.vec2(1,2).add([-2]), {x: -1, y:2})
+      assert.deepEqual(new Cartes.vec2(1,2).add([2,-3]), new Cartes.vec2(3, -1) )
+      assert.deepEqual(new Cartes.vec2(1,2).add([-2]), new Cartes.vec2(-1, 2) )
     })
 
     it('should support vector parameter', function(){
-      assert.deepEqual(new Cartes.vec2(1,2).add(new Cartes.vec2(2,-3)), {x:3, y:-1})
+      assert.deepEqual(new Cartes.vec2(1,2).add(new Cartes.vec2(2,-3)), new Cartes.vec2(3, -1) )
     })
 
     it('should support object', function(){
-      assert.deepEqual(new Cartes.vec2(1,2).add({x: 2, y:-3}), {x:3, y:-1})
-      assert.deepEqual(new Cartes.vec2(1,2).add({x: 2}), {x:3, y:2})
-      assert.deepEqual(new Cartes.vec2(1,2).add({y:-3}), {x:1, y:-1})
+      assert.deepEqual(new Cartes.vec2(1,2).add({x: 2, y:-3}), new Cartes.vec2(3, -1) )
+      assert.deepEqual(new Cartes.vec2(1,2).add({x: 2}), new Cartes.vec2(3, 2) )
+      assert.deepEqual(new Cartes.vec2(1,2).add({y:-3}), new Cartes.vec2(1, -1) )
     })
   })
 
   describe('#sub()', function(){
     it('should support number parameters', function(){
-      assert.deepEqual(new Cartes.vec2(1,2).sub(-3,4), {x:4, y:-2})
-      assert.deepEqual(new Cartes.vec2(1,2).sub(-3), {x:4, y:2})
-      assert.deepEqual(new Cartes.vec2(0,0).sub(0,4), {x:0, y:-4})
+      assert.deepEqual(new Cartes.vec2(1,2).sub(-3,4), new Cartes.vec2(4, -2) )
+      assert.deepEqual(new Cartes.vec2(1,2).sub(-3), new Cartes.vec2(4, 2) )
+      assert.deepEqual(new Cartes.vec2(0,0).sub(0,4), new Cartes.vec2(0, -4) )
     })
 
     it('should not mutate original object', function(){
       var v = new Cartes.vec2(1,2)
       var u = v.sub(2,1)
 
-      assert.deepEqual(v, {x: 1, y: 2})
+      assert.deepEqual(v, new Cartes.vec2(1, 2) )
     })
 
     it('should support array parameter', function(){
-      assert.deepEqual(new Cartes.vec2(1,2).sub([2,-3]), {x:-1, y:5})
-      assert.deepEqual(new Cartes.vec2(1,2).sub([-2]), {x:3, y: 2})
+      assert.deepEqual(new Cartes.vec2(1,2).sub([2,-3]), new Cartes.vec2(-1, 5) )
+      assert.deepEqual(new Cartes.vec2(1,2).sub([-2]), new Cartes.vec2(3, 2) )
     })
 
     it('should support vector parameter', function(){
-      assert.deepEqual(new Cartes.vec2(1,2).sub(new Cartes.vec2(2,-3)), {x:-1, y:5})
+      assert.deepEqual(new Cartes.vec2(1,2).sub(new Cartes.vec2(2,-3)), new Cartes.vec2(-1, 5) )
     })
 
     it('should support object', function(){
-      assert.deepEqual(new Cartes.vec2(1,2).sub({x: 2, y:-3}), {x:-1, y:5})
-      assert.deepEqual(new Cartes.vec2(1,2).sub({x: 2}), {x:-1, y:2})
-      assert.deepEqual(new Cartes.vec2(1,2).sub({y:-3}), {x:1, y:5})
+      assert.deepEqual(new Cartes.vec2(1,2).sub({x: 2, y:-3}), new Cartes.vec2(-1, 5) )
+      assert.deepEqual(new Cartes.vec2(1,2).sub({x: 2}), new Cartes.vec2(-1, 2) )
+      assert.deepEqual(new Cartes.vec2(1,2).sub({y:-3}), new Cartes.vec2(1, 5) )
     })
   })
 
@@ -194,8 +196,8 @@ describe('vec2', function() {
       var u = v.spawn(0.1, 0.2)
 
       assert.ok(v != u)
-      assert.deepEqual(v, {x:1.1, y:2.2})
-      assert.deepEqual(u, {x:0.1, y:0.2})
+      assert.deepEqual(v, new Cartes.vec2(1.1, 2.2) )
+      assert.deepEqual(u, new Cartes.vec2(0.1, 0.2) )
     })
   })
 
@@ -205,8 +207,8 @@ describe('vec2', function() {
       var u = v.clone()
 
       assert.ok(v != u)
-      assert.deepEqual(v, {x:1.1, y:2.2})
-      assert.deepEqual(u, {x:1.1, y:2.2})
+      assert.deepEqual(v, new Cartes.vec2(1.1, 2.2) )
+      assert.deepEqual(u, new Cartes.vec2(1.1, 2.2) )
     })
   })
 
@@ -230,48 +232,48 @@ describe('vec2', function() {
   describe('#normalize()', function(){
     it('should return normalized vector', function(){
       var v = new Cartes.vec2(0,100)
-      assert.deepEqual(v.normalize(), {x:0, y:1})
+      assert.deepEqual(v.normalize(), new Cartes.vec2(0,1) )
 
       var x = 8.5
       var y = 2.1
       var u = new Cartes.vec2(x,y)
       var lu = Math.sqrt(x*x + y*y)
-      assert.deepEqual(u.normalize(), {x:x/lu, y:y/lu})
+      assert.deepEqual(u.normalize(), new Cartes.vec2(x/lu,y/lu) )
     })
 
     it('should mutate original vector', function(){
       var v = new Cartes.vec2(0,100)
       v.normalize()
-      assert.deepEqual(v, {x:0, y: 1})
+      assert.deepEqual(v, new Cartes.vec2(0,1) )
     })
 
     it('should not throw on zero-length vector', function(){
       var v = new Cartes.vec2(0,0)
-      v.normalize()
+      assert.doesNotThrow(function(){ v.normalize() })
     })
   })
 
   describe('#normalized()', function(){
     it('should return normalized vector', function(){
       var v = new Cartes.vec2(0,100)
-      assert.deepEqual(v.normalized(), {x:0, y:1})
+      assert.deepEqual(v.normalized(), new Cartes.vec2(0,1) )
 
       var x = 8.5
       var y = 2.1
       var u = new Cartes.vec2(x,y)
       var lu = Math.sqrt(x*x + y*y)
-      assert.deepEqual(u.normalized(), {x:x/lu, y:y/lu})
+      assert.deepEqual(u.normalized(), new Cartes.vec2(x/lu,y/lu) )
     })
 
     it('should not mutate original vector', function(){
       var v = new Cartes.vec2(0,100)
       v.normalized()
-      assert.deepEqual(v, {x:0, y: 100})
+      assert.deepEqual(v, new Cartes.vec2(0,100) )
     })
 
     it('should not throw on zero-length vector', function(){
       var v = new Cartes.vec2(0,0)
-      v.normalized()
+      assert.doesNotThrow(function(){ v.normalized() })
     })
   })
 
