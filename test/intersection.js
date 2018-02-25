@@ -9,6 +9,8 @@ var rayR = new Cartes.Ray([0,1], [1, 0]) // ray on line
 var rayN = new Cartes.Ray([0,2], [1, 1]) // ray pointed to wrong side (does not collide)
 var rayNP= new Cartes.Ray([0,2], [1, 0]) // ray parallel to a line
 
+var line2 = new Cartes.Line.fromPoints([0,0], [2,2])
+
 describe('Intersection', function(){
   describe('#lineToRay()', function(){
     it('should calculate intersection in case of point', function(){
@@ -38,6 +40,28 @@ describe('Intersection', function(){
       var res = line.intersect(rayN)
       assert.isArray(res)
       assert.equal(res.length, 0)
+    })
+  })
+
+  describe('#lineToLine()', function(){
+    it('should calculate intersection in case of point', function(){
+      var res = line.intersect(line2)
+      assert.isArray(res)
+      assert.equal(res.length, 1)
+      assert.instanceOf(res[0], Cartes.vec2)
+      assert.approximately(res[0].x, 1, eps)
+      assert.approximately(res[0].y, 1, eps)
+    })
+
+    it('should calculate intersection in case of line', function(){
+      var sameLine = line2.clone()
+      var res = line2.intersect(sameLine)
+      assert.isArray(res)
+      assert.equal(res.length, 1)
+      assert.instanceOf(res[0], Cartes.Line)
+      assert.approximately(res[0].n.x, -Cartes.constants.invSqrtTwo, eps)
+      assert.approximately(res[0].n.y, Cartes.constants.invSqrtTwo, eps)
+      assert.approximately(res[0].d, 0, eps)
     })
   })
 })
